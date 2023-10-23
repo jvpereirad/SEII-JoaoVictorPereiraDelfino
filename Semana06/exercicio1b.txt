@@ -1,0 +1,24 @@
+Limite de bytes em pacotes TCP e UDP:
+
+TCP (Transmission Control Protocol): O TCP não tem um limite fixo de bytes por pacote. Ele é um protocolo orientado à conexão que divide os dados em segmentos, e esses
+segmentos podem variar em tamanho. O tamanho máximo do segmento é determinado pela MTU (Maximum Transmission Unit) da rede, que é geralmente 1500 bytes na maioria das
+redes Ethernet. No entanto, em redes diferentes ou com configurações específicas, o tamanho do segmento pode ser menor. Os segmentos TCP são então divididos em pacotes
+IP, que também têm um limite de tamanho definido pela MTU da rede.
+
+UDP (User Datagram Protocol): O UDP também não tem um limite fixo de bytes por pacote, mas funciona com datagramas. O tamanho do datagrama é limitado pelo tamanho
+máximo do pacote permitido pela rede, que é geralmente igual à MTU da rede.
+
+Transmitindo um arquivo grande via internet:
+Para transmitir um arquivo grande via internet, você pode usar tanto o TCP quanto o UDP, dependendo dos requisitos específicos do seu caso.
+
+TCP: O TCP é uma escolha comum para a transmissão de arquivos grandes, pois é um protocolo confiável que garante a entrega dos dados na ordem correta e lida com
+possíveis perdas de pacotes. Você pode dividir o arquivo em segmentos menores, transmiti-los sequencialmente e reagrupá-los no destino. O TCP é mais lento do que o
+UDP devido à sua natureza orientada à conexão e à verificação constante, mas é ideal para dados que não podem ser perdidos ou desordenados.
+
+UDP: O UDP é mais adequado para casos em que a velocidade de transmissão é mais importante do que a confiabilidade. Você pode dividir o arquivo em pacotes e
+transmiti-los via UDP. No entanto, você deve estar ciente de que o UDP não garante a entrega dos dados ou a ordem correta, então você precisará implementar sua
+própria lógica de controle de erros e retransmissão, se necessário. O UDP é mais rápido, mas menos confiável do que o TCP.
+
+Em resumo, se você precisa transmitir um arquivo grande via internet e a integridade dos dados é crucial, o TCP é a escolha mais segura. Se a velocidade é mais
+importante e você pode lidar com a possibilidade de perda de dados ou desordem, o UDP pode ser uma opção mais eficiente. Em muitos casos, uma combinação de ambos
+os protocolos pode ser usada, por exemplo, transmitindo os dados via UDP e usando o TCP para controle de erros em pacotes críticos.
